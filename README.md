@@ -2,7 +2,7 @@
 ~~目前一直在调整参数，希望找到常规linux死机的原因。（aws gcp aliyun都不会死机，但linode digitalvm kagoya等常规vps都会概率死机）  
 基本找到死机原因了，是ss或者v2进程与内存自动清理程序ksoftirqd/0 互殴导致CPU占满被母鸡关机了，解决方法看优化内存相关）~~  
  - 新增一个控制CPU防止ubuntu死机的方法，实际效果不佳，推荐使用centos安装3.11.36.2版本（gtmd ubuntu)  
- - 内存低于512M不建议使用，一定会死机  
+ - ~~内存低于512M不建议使用，一定会死机~~  好吧，修改配置后自测下来大厂家的512还是很快乐的，像什么onevps之类的超售大王还是算了..
 ***
 ***
   * [更换内核相关](#更换内核相关)
@@ -26,7 +26,7 @@ bash <(wget --no-check-certificate -qO- wget https://git.io/Kernel.sh)
  去查看锐速版本库发现有个内核版本很接近 2.6.32-573.1.1.el6.x86_64 .  
  执行安装命令:  
 ```
-bash <(wget --no-check-certificate -qO-  https://git.io/lotServerInstall.sh) install 2.6.32-573.1.1.el6.x86_64
+bash <(wget --no-check-certificate -qO-  https://git.io/lotServerInstall.sh) install 3.10.0-957.el7.x86_64
 ```
  > 锐速安装脚本就会强制安装内核版本为 2.6.32-573.1.1.el6.x86_64 的锐速.  
  安装命令中的 2.6.32-573.1.1.el6.x86_64 可自行更改.  
